@@ -1,40 +1,41 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import HobbyList from "../Components/Home/HobbyList";
+import TaskList from "../Components/Home/TaskList";
 import { useDispatch } from "react-redux";
-import { addNewHobby } from "../actions/hobby";
-import { setActiveHobby } from "../actions/hobby";
+import { addNewTask } from "../actions/Tasks";
+import { setNewTitle } from "../actions/Tasks";
 
-const randomNumber = () => {
-  return 1000 + Math.trunc(Math.random() * 9000);
-};
+
 const Homepage = (props) => {
-  const hobbyList = useSelector((state) => state.hobby.list);
-  const activeID = useSelector((state) => state.hobby.activeId);
-  const dispatch = useDispatch();
-  const newID = randomNumber();
-  const addHobbyListHandler = () => {
-    const newHobby = {
-      id: newID,
-      title: `hobby + ${newID}`,
-    };
-    const action = addNewHobby(newHobby);
-    dispatch(action);
-  };
-  const clickedHandler = (hobby) => {
-    const action = setActiveHobby(hobby);
-    dispatch(action);
-  };
+  const taskList = useSelector((state) => state.task.list);
+  const isEdit = useSelector((state) => state.task.editTask);
+  
+  let title= '' 
+  const getValue = (value) => {
+    return title = value
+  }
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const newTask = {
+      id: Math.random().toString(),
+      title: title
+    }
+    console.log(newTask)
+    const action = addNewTask(newTask);
+    console.log(action)
+    dispatch(action);
+  }
   return (
     <div className="homepage">
-      <h1>Redux hook - Homepage</h1>
-      <button onClick={addHobbyListHandler}>Random</button>
-      <HobbyList
-        hobbyList={hobbyList}
-        onHobbyClick={clickedHandler}
-        activeID={activeID}
-      ></HobbyList>
+      <h1>Todo-List</h1>
+      <form onSubmit={submitHandler}>
+        <input type='text' onChange={(event) => getValue(event.target.value)} />
+        <button type='submit'>Add Task</button>
+      </form>
+      <TaskList 
+      taskList={taskList}
+      isEdit={isEdit} />
     </div>
   );
 };

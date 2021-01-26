@@ -1,10 +1,8 @@
-import hobbyReducer from './Hobby';
+import taskReducer from './Task';
 import { combineReducers } from 'redux';
-import userReducers from './UserReducer';
 
 const rootReducer = combineReducers({
-    hobby: hobbyReducer,
-    user: userReducers,
+    task: taskReducer,
 });
 
 export default rootReducer;
