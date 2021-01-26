@@ -1,17 +1,14 @@
 
 const initialState = {
     list: [],
-    activeId: null
+    activeId: 1
 }
 
 
 const hobbyReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'add_hobby' : {
-            console.log(state)
-            console.log(state.list)
             const newList = [...state.list];
-            console.log(newList);
             newList.push(action.payload);
             
             return {
@@ -21,7 +18,11 @@ const hobbyReducer = (state = initialState, action) => {
         }
 
         case 'set_active_hobby' : {
-            break;
+            const newActiveId = action.payload.id;
+            return {
+                ...state,
+                activeId: newActiveId,
+            }
         }
 
         default : {
