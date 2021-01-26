@@ -3,17 +3,17 @@ import "./HobbyList.css";
 import PropTypes from 'prop-types';
 
 
-HobbyList.propTypes = {
-    hobbyList: PropTypes.array,
-    activeID: PropTypes.number,
-    onHobbyClick: PropTypes.func,
-}
+// HobbyList.propTypes = {
+//     hobbyList: PropTypes.array,
+//     activeID: PropTypes.number,
+//     onHobbyClick: PropTypes.func,
+// }
 
-HobbyList.defaultProps = {
-    hobbyList: [],
-    activeID: null,
-    onHobbyClick: null,
-}
+// HobbyList.defaultProps = {
+//     hobbyList: [],
+//     activeID: null,
+//     onHobbyClick: null,
+// }
 
 const HobbyList = (props) => {
   const { hobbyList, activeID, onHobbyClick } = props;
@@ -34,5 +34,13 @@ const HobbyList = (props) => {
     </ul>
   );
 };
+
+HobbyList.propTypes = {
+  activeID: PropTypes.any,
+  hobbyList: PropTypes.shape({
+    map: PropTypes.func
+  }),
+  onHobbyClick: PropTypes.func
+}
 
 export default HobbyList;
