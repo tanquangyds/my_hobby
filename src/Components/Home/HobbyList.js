@@ -37,9 +37,7 @@ const HobbyList = (props) => {
 
 HobbyList.propTypes = {
   activeID: PropTypes.any,
-  hobbyList: PropTypes.shape({
-    map: PropTypes.func
-  }),
+  hobbyList: PropTypes.array,
   onHobbyClick: PropTypes.func
 }
 
