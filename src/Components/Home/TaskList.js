@@ -1,27 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import "./TaskList.css";
 import { useSelector } from "react-redux";
 
 
 
 const TaskList = (props) => {
-  const { updateStatusClick, deleteClicked } = props;
+  const { updateStatusClick, deleteClicked, saveTaskHandle, editTask, clickedTask } = props;
   const taskList = useSelector((state) => state.task.list);
-  const [isEdit, setIsEdit] = useState(false);
-  const [getId, setGetId] = useState(null);
+  
 
   return (
     <ul className="task-list">
       {taskList.map((task, index) => {
         return (
           <li key={task.id}>
-            {getId === index && isEdit ? (
+            {editTask.editTaskId === index && editTask.isEdit ? (
               <div>
                 <input type="text"></input>{" "}
-                <span onClick={() => setIsEdit(!isEdit)}>Save</span>
+                <span onClick={() => saveTaskHandle(task, index)}>Save</span>
               </div>
             ) : (
-              <span onClick={() => {setIsEdit(!isEdit); setGetId(index)} }>{task.title}</span>
+              <span onClick={() => clickedTask(index)}>{task.title}</span>
             )}
 
             {task.completed ? (

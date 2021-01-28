@@ -12,7 +12,10 @@ const Homepage = (props) => {
   const inputEl = useRef(null);
   const dispatch = useDispatch();
   const [titleTask, setTitleTask] = useState("");
-  // const [getEditId, setGetEditId] = useState("");
+  const [isEdit, setIsEdit] = useState({
+    isEdit: false,
+    editTaskId: null
+  });
 
   const changedInPut = (value) => {
     setTitleTask(value);
@@ -51,6 +54,15 @@ const Homepage = (props) => {
     const action = deleteTask(index);
     dispatch(action);
   };
+
+  const clickedTaskHandler  = (index) => {
+    console.log('was clicked')
+    console.log(index)
+    const newStatus= {...isEdit}
+    if(!isEdit.isEdit) {newStatus.isEdit = !isEdit.isEdit} else {newStatus.isEdit = true};
+    newStatus.editTaskId = index;
+    setIsEdit(newStatus)
+  }
   return (
     <div className="homepage">
       <h1 className="title">Todo List Application</h1>
@@ -61,8 +73,8 @@ const Homepage = (props) => {
         inputEl={inputEl}
       />
       <TaskList
-        // editTaskId={getEditId}
-        // clickTask={clickTaskHandler}
+        clickedTask={clickedTaskHandler}
+        editTask={isEdit}
         saveTask={updateTaskHandler}
         updateStatusClick={updateStatusHandler}
         deleteClicked={deleteTaskHandler}
