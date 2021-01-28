@@ -1,0 +1,31 @@
+.form {
+    /* width: 90%; */
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 20px;
+    border-bottom: 2px solid #666;
+}
+
+.form > input {
+    flex: 1;
+    outline: none;
+    border:2px solid #666;
+    border-radius: 3px;
+    outline: none;
+}
+
+.form > input:focus {
+    border: 2px solid #E60023;
+    
+}
+
+.form > button {
+    background-color: #E60023;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    outline: none;
+
+}

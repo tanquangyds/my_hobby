@@ -5,9 +5,19 @@ export const addNewTask = (task) => {
     }
 }
 
-export const setNewTitle = (task) => {
+export const updateStatus = (status) => {
     return {
-        type: 'edit_task',
-        payload: task,
+        type: 'update_status',
+        payload: status,
     }
 }
+
+export const deleteTask = (index) => {
+    return {
+        type: 'delete_task',
+        payload: index,
+    }
+}
+
+
+
