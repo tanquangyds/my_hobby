@@ -21,6 +21,7 @@
 }
 
 .form > button {
+    cursor: pointer;
     background-color: #E60023;
     margin-left: 1rem;
     border: none;
@@ -28,4 +29,7 @@
     color: #fff;
     outline: none;
 
+}
+.form > button:hover {
+    background-color: #e2435b;  
 }

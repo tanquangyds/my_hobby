@@ -1,0 +1,36 @@
+
+li {
+    cursor: pointer;
+    transition: all 0.35s ease-in-out 0s; 
+    list-style: none;
+    text-align: left;
+    padding: 10px 0 5px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+li.active {
+    color: red;
+}
+
+.status {
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.btn-save {
+    cursor: pointer;
+    background-color: #E60023;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    outline: none;
+    padding: 2px 5px;
+}
+
+.btn-save:hover {
+    background-color: #e2435b;  
+}

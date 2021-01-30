@@ -8,7 +8,6 @@ const taskReducer = (state = initialState, action) => {
     case "add_task": {
       const newTaskList = [...state.list];
       newTaskList.push(action.payload);
-
       return {
         ...state,
         list: newTaskList,
@@ -16,10 +15,8 @@ const taskReducer = (state = initialState, action) => {
     }
 
     case "update_status": {
-      const getIndex = action.payload.index;
-      const newStatus = !action.payload.status;
       const newTaskList = [...state.list];
-      newTaskList[getIndex].completed = newStatus;
+      newTaskList[action.payload.index].completed = !action.payload.status;
       return {
         ...state,
         list: newTaskList,
@@ -29,9 +26,19 @@ const taskReducer = (state = initialState, action) => {
     case "delete_task": {
       return {
         ...state,
-        list: state.list.filter((el,id) => id !== action.payload),
+        list: state.list.filter((el, id) => id !== action.payload),
       };
     }
+
+    case "update_title": {
+      const newTask = [...state.list];
+      newTask[action.payload.index].title = action.payload.title;
+      return {
+        ...state,
+        list: newTask,
+      };
+    }
+
     default: {
       return state;
     }
