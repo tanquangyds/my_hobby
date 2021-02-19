@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import { addNewTask } from "../actions/Tasks";
+import { AddTodo } from "../actions/Tasks";
 import { updateStatus } from "../actions/Tasks";
 import { deleteTask } from "../actions/Tasks";
 import { updateTile } from "../actions/Tasks";
@@ -17,14 +17,9 @@ const Homepage = (props) => {
   const changedInPut = (value) => {
     setTitleTask(value);
   };
-  const submitHandler = (event) => {
-    event.preventDefault();
-    const newTask = {
-      id: Math.random().toString(),
-      title: titleTask,
-      completed: false,
-    };
-    const action = addNewTask(newTask);
+  const submitHandler = (formValues) => {
+    
+    const action = AddTodo(formValues);
     dispatch(action);
     inputEl.current.value = "";
     setTitleTask("");
@@ -52,7 +47,7 @@ const Homepage = (props) => {
     <div className="homepage">
       <h1 className="title">Todo List Application</h1>
       <TaskInputForm
-        submitForm={submitHandler}
+        onSubmit={submitHandler}
         titleTask={titleTask}
         changedInPut={changedInPut}
         inputEl={inputEl}

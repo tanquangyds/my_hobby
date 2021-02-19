@@ -1,0 +1,25 @@
+{
+  "task": [
+      {
+          "id": 1,
+          "title": "Học react",
+          "author": "Quang",
+          "status": "new",
+          "desc": "Lorem is..."
+      },
+      {
+          "id": 2,
+          "title": "Nghe Nhạc",
+          "author": "Quỳnh",
+          "status": "new",
+          "desc": "Lorem is..."
+      },
+      {
+          "id": 3,
+          "title": "Chơi game",
+          "author": "Quang",
+          "status": "new",
+          "desc": "Lorem is..."
+      }
+  ]
+}

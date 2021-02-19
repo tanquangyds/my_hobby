@@ -42,16 +42,18 @@ const Task = (props) => {
             </button>
           </form>
         ) : (
-          <span
+          <div
             onClick={() => {
               setIsEdit(!isEdit);
             }}
           >
-            {task.title}
-          </span>
+            <h4>{task.title}</h4>
+            <p>{task.author}</p>
+            <p>{task.status}</p>
+          </div>
         )}
 
-        {task.completed ? (
+        {/* {task.completed ? (
           <span
             className="status"
             onClick={() => updateStatusClick(task, index)}
@@ -71,7 +73,7 @@ const Task = (props) => {
               src="https://img.icons8.com/pastel-glyph/20/000000/time-machine.png"
             />
           </span>
-        )}
+        )} */}
         <span onClick={() => deleteClicked(index)}>
           <img
             alt="delete"

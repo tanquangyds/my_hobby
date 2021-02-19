@@ -1,3 +1,5 @@
+import types from '../actions/actionType';
+
 const initialState = {
   list: [],
   // editTaskId: null
@@ -5,7 +7,7 @@ const initialState = {
 
 const taskReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "add_task": {
+    case types.ADD_TODO: {
       const newTaskList = [...state.list];
       newTaskList.push(action.payload);
       return {
@@ -14,30 +16,30 @@ const taskReducer = (state = initialState, action) => {
       };
     }
 
-    case "update_status": {
-      const newTaskList = [...state.list];
-      newTaskList[action.payload.index].completed = !action.payload.status;
-      return {
-        ...state,
-        list: newTaskList,
-      };
-    }
+    // case "update_status": {
+    //   const newTaskList = [...state.list];
+    //   newTaskList[action.payload.index].completed = !action.payload.status;
+    //   return {
+    //     ...state,
+    //     list: newTaskList,
+    //   };
+    // }
 
-    case "delete_task": {
-      return {
-        ...state,
-        list: state.list.filter((el, id) => id !== action.payload),
-      };
-    }
+    // case "delete_task": {
+    //   return {
+    //     ...state,
+    //     list: state.list.filter((el, id) => id !== action.payload),
+    //   };
+    // }
 
-    case "update_title": {
-      const newTask = [...state.list];
-      newTask[action.payload.index].title = action.payload.title;
-      return {
-        ...state,
-        list: newTask,
-      };
-    }
+    // case "update_title": {
+    //   const newTask = [...state.list];
+    //   newTask[action.payload.index].title = action.payload.title;
+    //   return {
+    //     ...state,
+    //     list: newTask,
+    //   };
+    // }
 
     default: {
       return state;
